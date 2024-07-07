@@ -1,0 +1,23 @@
+TC = O(1)
+class Solution {
+public:
+    int numWaterBottles(int numBottles, int numExchange) {
+        return (numBottles + (numBottles-1 )/ (numExchange -1));
+    }
+};
+
+
+TC = O(n)
+class Solution {
+public:
+    int numWaterBottles(int numBottles, int numExchange) {
+         int ans = numBottles;
+        while( numBottles >= numExchange ){
+             int FullBottle = numBottles/numExchange;
+              ans += FullBottle;
+             int EmptyBottle   = numBottles % numExchange  ;
+             numBottles = EmptyBottle + FullBottle;
+        }
+        return ans;
+    }
+};
