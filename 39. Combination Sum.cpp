@@ -15,7 +15,7 @@ public:
         
             temp.push_back(candidates[i]);
             sum += candidates[i];
-        
+         // i = ind to make it combination and prevent from permutation
             solve(candidates, temp, target, sum, i, ans);
         
             temp.pop_back();
