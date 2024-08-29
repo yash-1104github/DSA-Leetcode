@@ -1,3 +1,31 @@
+//better TC =  o(N*M) and sc = o(n+m)
+class Solution {
+public:
+    void setZeroes(vector<vector<int>>& matrix) {
+         int n=matrix.size();
+        int m=matrix[0].size();
+        
+        unordered_map<int,int>mx,my;
+        for(int i=0;i<n;i++){
+            for(int j=0;j<m;j++){
+                if(matrix[i][j]==0){
+                    //it add row and col to the map
+                    mx[i]++;my[j]++;
+                }
+            }
+        }
+        for(int i=0;i<n;i++){
+            for(int j=0;j<m;j++){
+//If the row i is found in the mx map (indicating that this row contains a 0).
+// If the column j is found in the my map (indicating that this column contains a 0).
+                if(mx.find(i)!=mx.end()) matrix[i][j]=0;
+                else if(my.find(j)!=my.end()) matrix[i][j]=0;
+            }
+        }
+    }
+};
+
+//brute
 class Solution {
 public:
    
