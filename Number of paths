@@ -1,0 +1,47 @@
+//runtime error memory limit excid
+class Solution
+{
+    public:
+    long long  numberOfPaths(int M, int N)
+    {
+        if(M == 1 || N == 1) return 1;
+        return numberOfPaths(M-1,N) + numberOfPaths(M,N-1);
+    }
+};
+
+0(M*N) 
+class Solution
+{
+    public:
+    long long  numberOfPaths(int M, int N)
+    {
+         
+         vector<vector<int>>mat(M,vector<int>(N,1));
+         
+         for(int i = 1 ; i < M ; i++ ){
+             for(int j = 1 ; j < N ; j++){
+                 mat[i][j] = mat[i-1][j] + mat[i][j-1];
+             }
+         }
+         
+         return mat[M-1][N-1];
+  }
+};
+
+class Solution
+{
+    public:
+    long long  numberOfPaths(int M, int N)
+    {
+         
+         vector<int>dp(N,1);
+         
+         for(int i = 0 ; i < M -1; i++ ){
+             for(int j = 1 ; j < N ; j++){
+                dp[j]+= dp[j-1];
+             }
+         }
+         
+         return dp[N-1] ;
+    }
+};
