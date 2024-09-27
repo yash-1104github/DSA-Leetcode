@@ -1,3 +1,33 @@
+//optimal
+class Solution {
+public:
+    vector<int> twoSum(vector<int>& nums, int target) {
+        
+        unordered_map<int,int>mp;
+        
+        for(int i = 0 ;  i < nums.size(); i++){
+            int a = nums[i];
+            int more = target - a;
+            //first check if more exit in mp before adding a to mp 
+            if(mp.find(more) != mp.end()){
+                return {i, mp[more]};
+            }
+            //if not then add a to mp and iterate to next
+            
+            mp[a] = i;
+              
+        }
+         
+        return {};
+    }
+};
+
+
+
+
+
+
+
 class Solution {
 public:
     vector<int> twoSum(vector<int>& nums, int target) {
