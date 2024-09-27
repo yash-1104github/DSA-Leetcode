@@ -1,3 +1,4 @@
+
 class Solution {
 public:
     string reverseWords(string s) {
@@ -20,3 +21,47 @@ public:
         return s;
     }
 };
+
+
+
+//error
+class Solution {
+public:
+    string reverseWords(string s) {
+        int n = s.size();
+        string temp = "", ans = "", res = "";
+        for(int i = 0 ; i < n; i++){
+            
+            if(s[i] == ' ' ){
+                ans = temp + ans;
+                ans = s[i] + ans;
+                 temp = "";
+                continue;
+            }
+            temp += s[i] ;
+             
+            if(i == n-1){
+                ans = temp + ans;
+            }
+            
+          for(int i = 0 ; i < ans.size() ; i++){
+              if(ans[i] == ' ' && res.size() == 0 ){    
+                  continue;
+              }
+               
+              if(ans[i] == ' ' && ans[i] != ans[i-1]){
+                  res = res + ' ';
+              }
+              
+              if(ans[i] == ' ' && i == ans.size()-1){
+                      continue;
+              }
+                  res = res + ans[i];               
+          }
+        }
+        return res;
+    }
+};
+
+
+
