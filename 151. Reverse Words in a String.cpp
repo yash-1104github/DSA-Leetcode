@@ -1,4 +1,4 @@
-
+//leetcode
 class Solution {
 public:
     string reverseWords(string s) {
@@ -24,42 +24,29 @@ public:
 
 
 
-//error
+//gfg
 class Solution {
-public:
-    string reverseWords(string s) {
-        int n = s.size();
-        string temp = "", ans = "", res = "";
+  public:
+    // Function to reverse words in a given string.
+    string reverseWords(string str) {
+        // code here
+          int n = str.size();
+        string temp = "", ans = "";
         for(int i = 0 ; i < n; i++){
             
-            if(s[i] == ' ' ){
+            if(str[i] == '.' ){
                 ans = temp + ans;
-                ans = s[i] + ans;
+                ans = str[i] + ans;
                  temp = "";
                 continue;
             }
-            temp += s[i] ;
+            temp += str[i] ;
              
             if(i == n-1){
                 ans = temp + ans;
             }
-            
-          for(int i = 0 ; i < ans.size() ; i++){
-              if(ans[i] == ' ' && res.size() == 0 ){    
-                  continue;
-              }
-               
-              if(ans[i] == ' ' && ans[i] != ans[i-1]){
-                  res = res + ' ';
-              }
-              
-              if(ans[i] == ' ' && i == ans.size()-1){
-                      continue;
-              }
-                  res = res + ans[i];               
-          }
         }
-        return res;
+        return ans;
     }
 };
 
