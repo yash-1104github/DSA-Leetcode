@@ -1,0 +1,55 @@
+class Solution {
+  public:
+   
+    Node* deleteNode(Node* head, int x) {
+      
+          //empty doubly linked list 
+          if(head == nullptr){
+              return nullptr;
+          }
+           
+         //first node
+         if(x == 1){
+            Node* curr1 = head;
+            head  = head -> next;
+            if(head != NULL){
+                head->prev = nullptr;
+                curr1->next = nullptr;
+            }
+            delete curr1;
+            return head;
+         }
+        
+        Node* curr = head;
+        int cnt = 1;
+        
+        while(curr != nullptr && cnt < x ){
+            curr = curr->next;
+            cnt++;
+        }
+        
+        //kth node except first and last node
+        if(curr!= nullptr && curr->next != nullptr ){
+            
+            if(curr->next != nullptr){
+                curr->prev->next = curr->next;
+            }
+            
+            if(curr->prev != nullptr){
+                curr->next->prev =  curr->prev;
+            }
+            delete curr;
+        }
+        
+        //last node
+        if(curr->next == nullptr){
+            Node*temp = curr->prev;
+            temp->next = nullptr;
+            curr->prev = nullptr;
+            delete curr;
+        }
+        
+        
+        return head;
+   } 
+};
