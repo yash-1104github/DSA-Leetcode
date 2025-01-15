@@ -1,5 +1,63 @@
 class Solution {
 public:
+        int isValid(string curr1){
+
+            stack<char>st;
+             
+             for(char ch : curr1){
+                if(ch == '('){
+                    st.push(ch);
+                }
+                 else{
+                    if(st.empty()) return 0;
+                    char c = st.top();
+                    if(c == '('){
+                        st.pop();
+                    }
+                 }
+             }
+
+             if(!st.empty()) return 0;
+             return 1;
+        }
+    
+  vector<string>ans;
+
+    void  traversal(string curr , int n) {
+
+            if(curr.size() == 2*n){
+                if(isValid(curr) == 1){
+                   ans.push_back(curr);
+                }
+                return;
+            }
+
+             curr.push_back('(');
+             traversal(curr,n);
+             //undo
+             curr.pop_back();
+             curr.push_back(')');
+             traversal(curr,n);
+             //undo
+             curr.pop_back();
+        }
+     
+    vector<string> generateParenthesis(int n) {
+      
+
+        string temp = "";
+
+        traversal(temp,n);
+
+
+        return ans;
+
+
+    }
+};
+
+class Solution {
+public:
     
     void solve(int n , string& temp, vector<string>& ans){
     
