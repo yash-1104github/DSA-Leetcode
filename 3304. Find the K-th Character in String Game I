@@ -1,0 +1,33 @@
+class Solution {
+public:
+    char kthCharacter(int k) {
+       // create a array of size 26 
+       // ascii values of smaller alphabe 97 to 122 => [a,z]
+       // arr[char - 'a']
+       //arr[0] => 'a' upto arr[25] => 'z';
+
+        // vector<char>temp(26,'a');
+        
+        // for(int i = 1; i <= 25; i++){
+        //      temp[i] = temp[i-1] + 1;
+        // }
+
+         string temp1 = "a";
+
+        while(temp1.size() < k){
+              string temp2;
+
+              for(int i = 0 ; i < temp1.size(); i++){
+                  if(temp1[i] == 'z'){
+                      temp2 += 'a';
+                      continue;
+                  }
+                     char ch  = temp1[i] + 1;
+                     temp2 += ch;
+              }
+            
+             temp1 = temp1 + temp2;     
+        }
+          return temp1[k-1];
+    }
+};
